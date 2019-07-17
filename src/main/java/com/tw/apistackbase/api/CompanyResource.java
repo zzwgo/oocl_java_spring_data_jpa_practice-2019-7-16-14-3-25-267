@@ -16,7 +16,8 @@ public class CompanyResource {
     public Iterable<Company> list() {
         return companyRepository.findAll();
     }
-    
+
+
     @PostMapping(produces = {"application/json"})
     public Company add(@RequestBody Company company) {
         return companyRepository.save(company);
@@ -31,6 +32,16 @@ public class CompanyResource {
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         companyRepository.deleteById(id);
+    }
+
+    @GetMapping(value = "", params = {"name"})
+    public Company searchCompanyByName(@RequestParam String name) {
+        for(Company company:companyRepository.findAll()){
+            if(company.getName().equals(name)){
+                return company;
+            }
+        }
+        return  null;
     }
 
 }
