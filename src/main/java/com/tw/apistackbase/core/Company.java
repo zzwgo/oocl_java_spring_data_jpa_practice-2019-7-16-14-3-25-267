@@ -1,6 +1,7 @@
 package com.tw.apistackbase.core;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Company {
@@ -8,10 +9,21 @@ public class Company {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Employee> employees;
+
     @OneToOne(cascade = CascadeType.ALL)
     private CompanyProfile companyProfile;
 
     private String name;
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public CompanyProfile getCompanyProfile() {
         return companyProfile;
