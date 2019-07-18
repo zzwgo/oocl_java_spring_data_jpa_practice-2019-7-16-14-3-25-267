@@ -1,4 +1,4 @@
-package com.tw.apistackbase;
+package apistackbase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
